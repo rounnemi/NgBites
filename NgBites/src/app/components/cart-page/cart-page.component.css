@@ -1,0 +1,128 @@
+/* Modernized style */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin: 2rem;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 1px solid #d1d5db;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #f9fafb;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  gap: 1rem;
+}
+
+ul li:last-child {
+  border: none;
+}
+
+li img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e5e7eb;
+}
+
+li div {
+  padding: 0.5rem;
+}
+
+li div:not(:first-child) {
+  flex: 1;
+  min-width: 100px;
+}
+
+li select {
+  width: 4rem;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: #ffffff;
+  color: #374151;
+}
+
+li select:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+li .remove-button {
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  background: #ef4444;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+li .remove-button:hover {
+  background: #dc2626;
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #f9fafb;
+}
+
+.checkout > div {
+  font-size: 1.2rem;
+  color: #4b5563;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.foods-count::before {
+  content: "Count: ";
+  color: #6b7280;
+}
+
+.total-price::before {
+  content: "Price: ";
+  color: #6b7280;
+}
+
+.checkout a {
+  padding: 1rem 2rem;
+  color: white;
+  background: #2563eb;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-size: 1.1rem;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.checkout a:hover {
+  background: #1d4ed8;
+}
