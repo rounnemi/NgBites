@@ -1,1 +1,17 @@
-<p>dashboard works!</p>
+<div class="container">
+    <div class="menu">
+      @for (item of allItems; track item) {
+        @if (isAdmin || !item.forAdmin) {
+          <a 
+            routerLink="{{item.url}}" 
+            [style.color]="item.color" 
+            class="menu-item"
+          >
+            <img [src]="item.imageUrl" [alt]="item.title" class="menu-image">
+            <h2 class="menu-title">{{ item.title }}</h2>
+          </a>
+        }
+      }
+    </div>
+  </div>
+  
