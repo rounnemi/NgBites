@@ -1,14 +1,69 @@
-div {
+:root {
+    --primary-color: #4a90e2; /* Bleu moderne */
+    --secondary-color: #ffffff; /* Blanc */
+    --accent-color: #ff6f61; /* Corail */
+    --background-color: #f8f9fa; /* Gris clair */
+    --text-color: #333333; /* Gris foncé */
+    --hover-color: #3a7bd5; /* Bleu plus foncé */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --font-family: 'Roboto', sans-serif;
+    --transition-speed: 0.3s;
+  }
+  
+  div {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-div a {
-    background-color: #f0f0f0;
-    padding: 0.3rem 1rem;
-    margin: 0.2rem 0.15rem;
-    border-radius: 10rem;
-    font-weight: 600;
-    color: blue;
-}
+    gap: 0.8rem; /* Espacement entre les tags */
+    margin: 1.5rem 0; /* Marge externe */
+    padding: 1rem; /* Padding interne */
+    background-color: var(--background-color); /* Fond léger */
+    border-radius: 1rem; /* Coins arrondis */
+  }
+  
+  div a {
+    background-color: var(--primary-color); /* Couleur principale */
+    padding: 0.5rem 1.5rem; /* Padding ajusté */
+    border-radius: 2rem; /* Coins très arrondis */
+    font-weight: 600; /* Texte en gras */
+    color: var(--secondary-color); /* Texte blanc */
+    text-decoration: none; /* Pas de soulignement */
+    font-family: var(--font-family); /* Police moderne */
+    box-shadow: 0 3px 6px var(--shadow-color); /* Ombre douce */
+    transition: all var(--transition-speed) ease; /* Transition fluide */
+    border: 2px solid transparent; /* Bordure transparente */
+  }
+  
+  div a:hover {
+    background-color: var(--hover-color); /* Couleur au survol */
+    color: var(--secondary-color); /* Texte blanc */
+    box-shadow: 0 5px 10px var(--shadow-color); /* Ombre plus prononcée */
+    transform: translateY(-3px); /* Légère élévation */
+    border-color: var(--accent-color); /* Bordure colorée */
+  }
+  
+  div a:active {
+    transform: scale(0.95); /* Réduction au clic */
+    box-shadow: 0 2px 4px var(--shadow-color); /* Ombre réduite */
+  }
+  
+  /* Effet de gradient au survol pour un look moderne */
+  div a:hover {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  }
+  
+  /* Animation subtile au chargement */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  div a {
+    animation: fadeIn 0.5s ease-out;
+  }
