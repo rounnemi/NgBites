@@ -5,6 +5,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { FoodPageComponent } from './components/pages/food-details/food-details.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 export const routes: Routes = [
     // no lazy loading
@@ -15,5 +16,6 @@ export const routes: Routes = [
 
     { path: 'dashboard', component: DashboardComponent},
     { path: 'profile', component: ProfilePageComponent},
+    {path :'cart-page' , component :CartPageComponent}
 
 ];
