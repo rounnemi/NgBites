@@ -9,7 +9,7 @@
 .menu {
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, 1fr); 
     justify-items: center;
 }
 
@@ -45,9 +45,9 @@
 
 .menu h2 {
     font-size: 1.2rem;
-    color: #000000; /* Texte noir */
+    color: #000000; 
     text-align: center;
     margin: 0;
-    font-weight: 500; /* Police élégante */
+    font-weight: 500; 
     letter-spacing: 0.5px;
 }

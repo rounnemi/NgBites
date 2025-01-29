@@ -1,1 +1,17 @@
-<p>profile-page works!</p>
+<div class="container">
+    <div class="details">
+        <app-title title="Update Personal Information" fontSize="1.6rem"></app-title>
+        <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+            <text-input [control]="this.profileForm.controls['name']" label="Name"
+                [showErrorsWhen]="isSubmitted"></text-input>
+            <text-input [control]="this.profileForm.controls['address']" label="Address"
+                [showErrorsWhen]="isSubmitted"></text-input>
+
+            <default-button text="Update" bgColor="#009e84"></default-button>
+        </form>
+    </div>
+
+    <div class="details">
+        <app-change-password></app-change-password>
+    </div>
+</div>
