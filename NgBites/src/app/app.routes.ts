@@ -15,46 +15,49 @@ import { FoodEditPageComponent } from './components/pages/food-edit-page/food-ed
 import { authGuard } from './guards/auth.guard';
 import {ConfirmCartComponent} from "./components/pages/confirm-cart/confirm-cart.component"
 export const routes: Routes = [
-  // no lazy loading
-  { path: 'login', component: LoginPageComponent },
-  { path: 'register', component: RegisterPageComponent },
-  { path: '', 
-    component: HomeComponent,
+  { path: 'login', 
+    component: LoginPageComponent 
+  },
+  { path: 'register', 
+    component: RegisterPageComponent 
+  },
+  {
+    path: '',
+    loadComponent: () => import('./components/pages/home/home.component').then(m => m.HomeComponent),
     canActivate: [authGuard],
-
-   },
+  },
   { path: 'food/:id', 
     component: FoodPageComponent,
     canActivate: [authGuard],
- },
+  },
   { path: 'dashboard', 
     component: DashboardComponent,
     canActivate: [authGuard], 
-},
+  },
   { path: 'profile', 
     component: ProfilePageComponent,
     canActivate: [authGuard], 
-},
+  },
   { path: 'cart-page', 
     component: CartPageComponent,
     canActivate: [authGuard], 
-},
+  },
 
   //admin routes
-  { path: 'orders', 
-    component: OrdersPageComponent,
-    canActivate: [authGuard], 
-}, 
+  {
+    path: 'orders',
+    loadComponent: () => import('./components/pages/orders-page/orders-page.component').then(m => m.OrdersPageComponent),
+    canActivate: [authGuard],
+  },
   {
     path: 'orders/:filter',
     component: OrdersPageComponent,
     canActivate: [authGuard],
   },
-
   {
     path: 'admin/users',
-    component: UsersPageComponent,
-    canActivate: [adminGuard,authGuard],
+    loadComponent: () => import('./components/pages/users-page/users-page.component').then(m => m.UsersPageComponent),
+    canActivate: [adminGuard, authGuard],
   },
   {
     path: 'admin/editUser/:userId',
@@ -69,8 +72,8 @@ export const routes: Routes = [
 
   {
     path: 'admin/foods',
-    component: FoodsAdminPageComponent,
-    canActivate: [adminGuard,authGuard],
+    loadComponent: () => import('./components/pages/foods-admin-page/foods-admin-page.component').then(m => m.FoodsAdminPageComponent),
+    canActivate: [adminGuard, authGuard],
   },
   {
     path: 'admin/foods/:searchTerm',
@@ -100,5 +103,10 @@ export const routes: Routes = [
   {
     path :'search/:searchTerm',
     component : HomeComponent
-  }
+  },
+  
+
+  
+  
+  
 ];
