@@ -12,59 +12,79 @@ import { adminGuard } from './auth/guards/admin.guard';
 import { UserEditPageComponent } from './components/pages/user-edit-page/user-edit-page.component';
 import { FoodsAdminPageComponent } from './components/pages/foods-admin-page/foods-admin-page.component';
 import { FoodEditPageComponent } from './components/pages/food-edit-page/food-edit-page.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   // no lazy loading
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
-  { path: '', component: HomeComponent },
-  { path: 'food/:id', component: FoodPageComponent },
+  { path: '', 
+    component: HomeComponent,
+    canActivate: [authGuard],
 
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'profile', component: ProfilePageComponent },
-  { path: 'cart-page', component: CartPageComponent },
+   },
+  { path: 'food/:id', 
+    component: FoodPageComponent,
+    canActivate: [authGuard],
+ },
+  { path: 'dashboard', 
+    component: DashboardComponent,
+    canActivate: [authGuard], 
+},
+  { path: 'profile', 
+    component: ProfilePageComponent,
+    canActivate: [authGuard], 
+},
+  { path: 'cart-page', 
+    component: CartPageComponent,
+    canActivate: [authGuard], 
+},
 
   //admin routes
-  { path: 'orders', component: OrdersPageComponent },
+  { path: 'orders', 
+    component: OrdersPageComponent,
+    canActivate: [authGuard], 
+}, 
   {
     path: 'orders/:filter',
     component: OrdersPageComponent,
+    canActivate: [authGuard],
   },
 
   {
     path: 'admin/users',
     component: UsersPageComponent,
-    canActivate: [adminGuard],
+    canActivate: [adminGuard,authGuard],
   },
   {
     path: 'admin/editUser/:userId',
     component: UserEditPageComponent,
-    canActivate: [adminGuard],
+    canActivate: [adminGuard,authGuard],
   },
   {
     path: 'admin/users/:searchTerm',
     component: UsersPageComponent,
-    canActivate: [adminGuard],
+    canActivate: [adminGuard,authGuard],
   },
 
   {
     path: 'admin/foods',
     component: FoodsAdminPageComponent,
-    canActivate: [adminGuard],
+    canActivate: [adminGuard,authGuard],
   },
   {
     path: 'admin/foods/:searchTerm',
     component: FoodsAdminPageComponent,
-    canActivate: [adminGuard],
+    canActivate: [adminGuard,authGuard],
   },
   {
     path: 'admin/addFood',
     component: FoodEditPageComponent,
-    canActivate: [adminGuard],
+    canActivate: [adminGuard,authGuard],
   },
   {
     path: 'admin/editFood/:id',
     component: FoodEditPageComponent,
-    canActivate: [ adminGuard],
+    canActivate: [ adminGuard, authGuard],
   },
 ];
