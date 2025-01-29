@@ -5,7 +5,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { FoodPageComponent } from './components/pages/food-details/food-details.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
-import { CartPageComponent } from './components/cart-page/cart-page.component';
+import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
 import { OrdersPageComponent } from './components/pages/orders-page/orders-page.component';
 import { UsersPageComponent } from './components/pages/users-page/users-page.component';
 import { adminGuard } from './auth/guards/admin.guard';
@@ -13,7 +13,7 @@ import { UserEditPageComponent } from './components/pages/user-edit-page/user-ed
 import { FoodsAdminPageComponent } from './components/pages/foods-admin-page/foods-admin-page.component';
 import { FoodEditPageComponent } from './components/pages/food-edit-page/food-edit-page.component';
 import { authGuard } from './guards/auth.guard';
-
+import {ConfirmCartComponent} from "./components/pages/confirm-cart/confirm-cart.component"
 export const routes: Routes = [
   // no lazy loading
   { path: 'login', component: LoginPageComponent },
@@ -87,4 +87,10 @@ export const routes: Routes = [
     component: FoodEditPageComponent,
     canActivate: [ adminGuard, authGuard],
   },
+  { 
+    path : 'confirm-cart',
+    component : ConfirmCartComponent ,
+    canActivate: [authGuard],
+
+  }
 ];

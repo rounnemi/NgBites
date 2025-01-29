@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { CartService } from '../../services/cart.service';
-import { Cart } from '../../models/Cart';
-import { CartItem } from '../../models/CartItem';
+import { CartService } from '../../../services/cart.service';
+import { Cart } from '../../../models/Cart';
+import { CartItem } from '../../../models/CartItem';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
