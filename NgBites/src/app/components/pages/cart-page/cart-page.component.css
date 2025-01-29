@@ -2,30 +2,36 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: 1.5rem;
+  gap: 2rem;
   margin: 2rem;
+  padding: 1rem;
 }
 
 ul {
   display: flex;
   flex-direction: column;
   flex: 3;
-  border: 1px solid #d1d5db;
   border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background: #f9fafb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
   list-style: none;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 ul li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1.5rem;
   border-bottom: 1px solid #e5e7eb;
-  gap: 1rem;
+  gap: 1.5rem;
+  transition: background 0.3s;
+}
+
+ul li:hover {
+  background: #f3f4f6;
 }
 
 ul li:last-child {
@@ -33,30 +39,44 @@ ul li:last-child {
 }
 
 li img {
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #e5e7eb;
+  border: 3px solid #e5e7eb;
+  transition: transform 0.3s ease-in-out;
+}
+
+li img:hover {
+  transform: scale(1.1);
 }
 
 li div {
   padding: 0.5rem;
+  flex: 1;
+  min-width: 120px;
 }
 
-li div:not(:first-child) {
-  flex: 1;
-  min-width: 100px;
+li a {
+  font-weight: 600;
+  color: #2563eb;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+li a:hover {
+  color: #1d4ed8;
 }
 
 li select {
-  width: 4rem;
+  width: 5rem;
   padding: 0.5rem;
   border: 1px solid #d1d5db;
   border-radius: 0.5rem;
   font-size: 1rem;
   background: #ffffff;
   color: #374151;
+  cursor: pointer;
 }
 
 li select:focus {
@@ -65,18 +85,19 @@ li select:focus {
 }
 
 li .remove-button {
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   background: #ef4444;
   color: white;
-  font-size: 0.9rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 li .remove-button:hover {
   background: #dc2626;
+  transform: scale(1.05);
 }
 
 .checkout {
@@ -85,12 +106,12 @@ li .remove-button:hover {
   justify-content: space-between;
   align-items: center;
   flex: 1;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  border: 1px solid #d1d5db;
+  gap: 2rem;
+  padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background: #f9fafb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+  text-align: center;
 }
 
 .checkout > div {
@@ -104,24 +125,28 @@ li .remove-button:hover {
 .foods-count::before {
   content: "Count: ";
   color: #6b7280;
+  font-weight: 500;
 }
 
 .total-price::before {
-  content: "Price: ";
+  content: "Total: ";
   color: #6b7280;
+  font-weight: 500;
 }
 
 .checkout a {
-  padding: 1rem 2rem;
+  padding: 1rem 2.5rem;
   color: white;
-  background: #2563eb;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
   border-radius: 0.75rem;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
   text-align: center;
   transition: all 0.3s;
 }
 
 .checkout a:hover {
-  background: #1d4ed8;
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: scale(1.05);
 }

@@ -5,20 +5,22 @@
       <ul>
         @if (!user.token) {
           <li>
-            <a routerLink="/login">Login</a>
+            <a routerLink="/login">Connexion</a>
           </li>
         }
         @if (user.token) {
           <li class="menu-container">
-            <a routerLink="/dashboard">{{user.name}}</a>
+            <a routerLink="/dashboard" class="user-name">
+              {{user.name}}
+              <span class="arrow-down">▼</span>
+            </a>
             <div class="menu">
               <a routerLink="/profile">Profile</a>
               <a (click)="logout()">Logout</a>
             </div>
           </li>
         }
-        
-    </ul>
-  </nav>
-</div>
+      </ul>
+    </nav>
+  </div>
 </header>
