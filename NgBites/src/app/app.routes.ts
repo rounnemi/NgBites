@@ -7,6 +7,9 @@ import { DashboardComponent } from './components/pages/dashboard/dashboard.compo
 import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { OrdersPageComponent } from './components/pages/orders-page/orders-page.component';
+import { UsersPageComponent } from './components/pages/users-page/users-page.component';
+import { adminGuard } from './auth/guards/admin.guard';
+import { UserEditPageComponent } from './components/pages/user-edit-page/user-edit-page.component';
 
 export const routes: Routes = [
   // no lazy loading
@@ -24,5 +27,27 @@ export const routes: Routes = [
   {
     path: 'orders/:filter',
     component: OrdersPageComponent,
+  },
+
+  {
+    path: 'admin/users',
+    component: UsersPageComponent,
+    canActivate: [adminGuard],
+  },
+  {
+    path: 'admin/editUser/:userId',
+    component: UserEditPageComponent,
+    canActivate: [adminGuard],
+  },
+  {
+    path: 'admin/users/:searchTerm',
+    component: UsersPageComponent,
+    canActivate: [adminGuard],
+  },
+
+  {
+    path: 'admin/foods',
+    component: FoodsAdminPageComponent,
+    canActivate: [ adminGuard],
   },
 ];

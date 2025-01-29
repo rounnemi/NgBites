@@ -12,11 +12,12 @@ import { IUserUpdateProfile } from '../models/dtos/IUserUpdateProfile';
 const USER_KEY = 'User'; //for local storage
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
-  private userSubject = new BehaviorSubject<User>(this.getUserFromLocalStorage());
+  private userSubject = new BehaviorSubject<User>(
+    this.getUserFromLocalStorage()
+  );
   public userObservable: Observable<User>;
 
   constructor(private http: HttpClient, private toastrService: ToastrService) {
@@ -39,14 +40,13 @@ export class UserService {
           this.toastrService.success(
             `Welcome to Foodmine !`,
             'Login Successful'
-          )
+          );
         },
         error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error, 'Login Failed')
-        }
+          this.toastrService.error(errorResponse.error, 'Login Failed');
+        },
       })
-    )
-
+    );
   }
 
   // register
@@ -60,13 +60,13 @@ export class UserService {
           this.toastrService.success(
             `Welcome to Foodmine ${user.name}!`,
             'Register Successful'
-          )
+          );
         },
         error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error, 'Register Failed')
-        }
+          this.toastrService.error(errorResponse.error, 'Register Failed');
+        },
       })
-    )
+    );
   }
 
   // logout
@@ -75,7 +75,6 @@ export class UserService {
     localStorage.removeItem(USER_KEY);
     window.location.reload();
   }
-
 
   updateProfile(userUpdateProfile: IUserUpdateProfile): Observable<User> {
     return this.http.put<User>(USER_UPDATE_PROFILE_URL, userUpdateProfile).pipe(
@@ -86,13 +85,16 @@ export class UserService {
           this.toastrService.success(
             `Profile Updated Successfully`,
             'Profile Updated'
-          )
+          );
         },
         error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error, 'Profile Update Failed')
-        }
+          this.toastrService.error(
+            errorResponse.error,
+            'Profile Update Failed'
+          );
+        },
       })
-    )
+    );
   }
 
   changePassword(currentPassword: string, newPassword: string) {
@@ -108,20 +110,21 @@ export class UserService {
           this.toastrService.success(
             `Password Changed Successfully`,
             'Password Changed'
-          )
+          );
         },
         error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error, 'Password Change Failed')
-        }
+          this.toastrService.error(
+            errorResponse.error,
+            'Password Change Failed'
+          );
+        },
       })
     );
   }
 
-
   getAll(searchTerm: string): Observable<User[]> {
     return this.http.get<User[]>(GET_ALL_USERS + (searchTerm ?? ''));
   }
-
 
   getById(userId: string): Observable<User> {
     return this.http.get<User>(USER_BY_ID_URL + userId);
@@ -130,7 +133,6 @@ export class UserService {
   updateUser(userid: string, userData: any) {
     return this.http.put(UPDATE_USER_URL + userid, userData);
   }
-
 
   private setUserToLocalStorage(user: User) {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
@@ -144,4 +146,7 @@ export class UserService {
     return new User();
   }
 
+  toggleBlock(userId: string): Observable<boolean> {
+    return this.http.put<boolean>(USER_BLOCK_URL + userId, {});
+  }
 }
