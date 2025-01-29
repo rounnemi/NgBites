@@ -6,19 +6,19 @@ import { ToastrService } from 'ngx-toastr';
 import { TitleComponent } from '../../shared/title/title.component';
 import { TextInputComponent } from '../../shared/text-input/text-input.component';
 import { DefaultButtonComponent } from '../../shared/default-button/default-button.component';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.css',
   standalone: true,
-  imports: [TitleComponent, ReactiveFormsModule, TextInputComponent, DefaultButtonComponent]
+  imports: [TitleComponent, ReactiveFormsModule, TextInputComponent, DefaultButtonComponent,ChangePasswordComponent]
 })
 export class ProfilePageComponent {
 
 profileForm: FormGroup;
 isSubmitted: boolean = false;
-// returnUrl = ''; // I think its not needed here
 
 constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router, private toastrService: ToastrService) { 
   let { name, address } = userService.currentUser;
@@ -39,13 +39,15 @@ updateProfile() {
   const name = this.profileForm.value.name as string;
   const address = this.profileForm.value.address as string;
 
-  this.userService.updateProfile({
-    name,
-    address
-  }).subscribe((newUser) => {
-    // console.log(newUser);
-    // this.router.navigateByUrl(this.returnUrl);
-  })
+  this.userService.updateProfile({ name, address }).subscribe({
+    next: () => {
+      console.log('Profile updated successfully.');
+    },
+    error: (err) => {
+      console.error('Error updating profile:', err);
+    }
+  });
+
 }
 
 }
