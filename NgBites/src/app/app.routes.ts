@@ -45,9 +45,5 @@ export const routes: Routes = [
     canActivate: [adminGuard],
   },
 
-  {
-    path: 'admin/foods',
-    component: FoodsAdminPageComponent,
-    canActivate: [ adminGuard],
-  },
+ 
 ];
