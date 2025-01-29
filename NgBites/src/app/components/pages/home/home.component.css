@@ -6,6 +6,13 @@
 }
 
 .most-ordered {
+  height: 470px; /* Ajuste la hauteur selon tes besoins */
+  overflow-y: auto; /* Ajoute un scroll vertical si nécessaire */
+  overflow-x: hidden; /* Évite le scroll horizontal */
+  padding: 1rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   background: #f8f9fa;
   padding: 1rem;
   border-radius: 1rem;
@@ -60,6 +67,11 @@
 .menu-du-jour {
   position: relative;
   overflow: hidden;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  
 }
 
 .menu-du-jour h2 {
