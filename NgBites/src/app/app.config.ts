@@ -33,8 +33,7 @@ export const appConfig: ApplicationConfig = {
     ),
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
-
-    provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(),
+    provideHttpClient(withInterceptorsFromDi()),
   ],
 };
