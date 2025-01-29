@@ -40,37 +40,7 @@
 <h2>🔍 Explorer Tous les Plats</h2>
 
 @defer {
-  <ul class="food-list">
-    @for (food of foods.slice(0, 10); track food) {  
-      <li>
-        <a routerLink="/food/{{food.id}}">
-          <img src="{{food.imageUrl}}" alt="{{food.name}}" loading="lazy"/>
-          <div class="content">
-            <div class="name">{{food.name}}</div>
-            <span class="favorite {{food.favorite?'':'not'}}">❤</span>
-            <div class="product-item-footer">
-              <div class="origins">
-                @for (origin of food.origins; track origin) {
-                  <span>{{origin}}</span>
-                }
-              </div>
-              <div class="cook-time">
-                <span>🕒</span>
-                {{food.cookTime}}
-              </div>
-            </div>
-            <div class="price">
-              <span>{{food.price | currency}}</span>
-            </div>
-          </div>
-        </a>
-      </li>
-    }
-  </ul>
-
-  <button class="load-more-btn" (click)="loadMore()" *ngIf="foods.length > visibleFoods.length">
-    Charger plus 🔽
-  </button>
+  <app-food-list [foods]="foods" [itemsPerPage]="10"></app-food-list>
   
 } @placeholder {
   <p>Chargement des plats...</p>

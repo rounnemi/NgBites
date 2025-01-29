@@ -1,0 +1,86 @@
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .food-card {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .food-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .food-card a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 1rem;
+  }
+  
+  .food-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 1rem 1rem 0 0;
+  }
+  
+  .food-card .content {
+    padding: 1rem;
+  }
+  
+  .food-card .name {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .food-card .favorite {
+    font-size: 1.5rem;
+    color: #e63946;
+  }
+  
+  .food-card .favorite.not {
+    color: #aaa;
+  }
+  
+  .food-card .origins span {
+    background: #e6f7ff;
+    color: #0077b6;
+    padding: 0.3rem 0.6rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .food-card .cook-time span {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .food-card .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745;
+    margin-top: 0.5rem;
+    display: block;
+  }
+  
+  @media (max-width: 1024px) {
+    .food-grid {
+      grid-template-columns: repeat(2, 1fr); 
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .food-grid {
+      grid-template-columns: repeat(1, 1fr); 
+    }
+  }
+  
+  
+  

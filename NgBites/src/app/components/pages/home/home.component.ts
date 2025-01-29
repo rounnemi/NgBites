@@ -6,9 +6,10 @@ import { Food } from '../../../models/Food';
 import { CommonModule } from '@angular/common';
 import { TagsComponent } from '../../shared/tags/tags.component';
 import { SearchComponent } from '../../shared/search/search.component';
+import { FoodListComponent } from '../food-list/food-list.component';
 @Component({
   selector: 'app-home',
-  imports: [SearchComponent,CommonModule, TagsComponent, RouterLink],
+  imports: [FoodListComponent,SearchComponent,CommonModule, TagsComponent, RouterLink],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true
