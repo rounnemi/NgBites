@@ -5,34 +5,46 @@ import { FoodService } from '../../../services/food.service';
 import { Food } from '../../../models/Food';
 import { CommonModule } from '@angular/common';
 import { TagsComponent } from '../../shared/tags/tags.component';
-
+import { SearchComponent } from '../../shared/search/search.component';
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, TagsComponent, RouterLink],
+  imports: [SearchComponent,CommonModule, TagsComponent, RouterLink],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true
 })
 export class HomeComponent {
+  foods: Food[] = [];
+  todayMenu: Food[] = [];
+  mostOrdered: Food[] = [];
+  visibleFoods: Food[] = [];
+  itemsPerPage = 10; 
 
-  foods:Food[] = [];
-
-  constructor(private foodService:FoodService, activatedRoute:ActivatedRoute) {
+  constructor(private foodService: FoodService, activatedRoute: ActivatedRoute) {
     let foodsObservable: Observable<Food[]>;
+
     activatedRoute.params.subscribe((params) => {
-      if(params['searchTerm']) {
+      console.log(params)
+      if (params['searchTerm']) {
         foodsObservable = this.foodService.getAllFoodsBySearchTerm(params['searchTerm']);
-      } else if(params['tag']) {
-        foodsObservable = this.foodService.getAllFoodsByTag(params['tag'])
+      } else if (params['tag']) {
+        console.log("hgjerkfb")
+        foodsObservable = this.foodService.getAllFoodsByTag(params['tag']);
       } else {
-        foodsObservable = foodService.getAll();
+        foodsObservable = this.foodService.getAll();
       }
 
       foodsObservable.subscribe((serverFoods) => {
         this.foods = serverFoods;
-      })
-      
-    })
+        this.todayMenu = serverFoods.slice(0, 3);
+        this.mostOrdered = serverFoods.sort((a, b) => b.stars - a.stars).slice(0, 5);
+        this.visibleFoods = this.foods.slice(0, this.itemsPerPage);
+      });
+    });
   }
 
+  loadMore() {
+    const nextItems = this.foods.slice(this.visibleFoods.length, this.visibleFoods.length + this.itemsPerPage);
+    this.visibleFoods = [...this.visibleFoods, ...nextItems];
+  }
 }
