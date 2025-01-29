@@ -96,5 +96,9 @@ export const routes: Routes = [
   {
     path :'tag/:tag',
     component : HomeComponent
+  },
+  {
+    path :'search/:searchTerm',
+    component : HomeComponent
   }
 ];
