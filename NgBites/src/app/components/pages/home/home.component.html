@@ -4,7 +4,7 @@
   <div class="most-ordered">
     <h2>🔥 Most Ordered</h2>
     <ul>
-      @for (food of mostOrdered; track food) {
+      @for (food of mostOrdered(); track food) {
         <li>
           <a routerLink="/food/{{food.id}}">
             <img src="{{food.imageUrl}}" alt="{{food.name}}" />
@@ -22,7 +22,7 @@
     <h2>📌 Today's Menu</h2>
     <div class="carousel">
       <div class="carousel-inner">
-        @for (food of todayMenu; track food) {
+        @for (food of todayMenu(); track food) {
           <div class="carousel-item">
             <a routerLink="/food/{{food.id}}">
               <img src="{{food.imageUrl}}" alt="{{food.name}}" />
@@ -41,7 +41,7 @@
 <h2>🔍 Explore All Dishes</h2>
 
 @defer {
-  <app-food-list [foods]="foods" [itemsPerPage]="10"></app-food-list>
+  <app-food-list [foods]="visibleFoods()" ></app-food-list>
   
 } @placeholder {
   <p>Chargement des plats...</p>
@@ -49,4 +49,11 @@
   <p>Encore un instant...</p>
 } @error {
   <p>Une erreur est survenue. Veuillez réessayer.</p>
+}
+  
+
+@if (visibleFoods().length < foods().length) {
+  <button class="load-more-btn" (click)="loadMore()">
+    Charger plus 🔽
+  </button>
 }

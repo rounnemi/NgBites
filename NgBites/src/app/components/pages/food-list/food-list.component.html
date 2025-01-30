@@ -1,5 +1,5 @@
 <div class="food-grid">
-    @for (food of visibleFoods(); track food) {  
+    @for (food of foods; track food) {  
       <div class="food-card">
         <a routerLink="/food/{{food.id}}">
           <img src="{{food.imageUrl}}" alt="{{food.name}}" loading="lazy"/>
@@ -25,8 +25,3 @@
       </div>
     }
   </div>
-  
-  <button class="load-more-btn" (click)="loadMore()" *ngIf="allFoods().length > visibleFoods().length">
-    Charger plus 🔽
-  </button>
-  
