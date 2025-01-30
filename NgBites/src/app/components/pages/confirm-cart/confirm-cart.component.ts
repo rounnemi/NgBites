@@ -67,6 +67,7 @@ export class ConfirmCartComponent {
     this.orderService.pay(this.order).subscribe({
       next: () => {
         this.toastrService.success("You can track your order in the orders section", "Your order has been validated");
+        this.cartService.clearCart()
         this.router.navigateByUrl('/')
       },
       error: (errorResponse) => {
